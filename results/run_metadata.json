@@ -1,0 +1,111 @@
+{
+  "scenarios": {
+    "baseline": {
+      "config_file": "configs/baseline.json",
+      "config": {
+        "scenario_name": "baseline",
+        "description": "Zero transaction costs. Simulated GBM data only.",
+        "initial_stock_price": 100.0,
+        "strike": 100.0,
+        "maturity_years": 1.0,
+        "risk_free_rate": 0.05,
+        "simulation_drift": 0.05,
+        "simulation_volatility": 0.2,
+        "hedging_volatility": 0.2,
+        "dividend_yield": 0.0,
+        "trading_steps": 252,
+        "n_paths": 10000,
+        "random_seed": 42,
+        "transaction_cost_rate": 0.0,
+        "strategies": {
+          "daily": 1,
+          "weekly": 5
+        },
+        "n_sample_paths_to_save": 10,
+        "outputs": {
+          "summary_csv": "baseline_summary.csv",
+          "terminal_pnl_csv": "baseline_terminal_pnl.csv",
+          "pnl_figure": "baseline_hedging_pnl.png",
+          "save_sample_paths": true
+        }
+      },
+      "random_seed": 42,
+      "command": "python scripts/run_experiments.py --config configs/baseline.json",
+      "runtime_seconds": 0.162,
+      "outputs": [
+        "results/baseline_summary.csv",
+        "results/baseline_terminal_pnl.csv",
+        "results/figures/baseline_hedging_pnl.png",
+        "results/sample_paths.csv",
+        "results/figures/sample_stock_paths.png"
+      ],
+      "python_version": "3.14.4",
+      "operating_system": "Windows",
+      "dependency_versions": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "pandas": "3.1.1",
+        "matplotlib": "3.11.2"
+      },
+      "executed_at_utc": "2026-11-15T08:50:53Z"
+    },
+    "transaction_cost": {
+      "config_file": "configs/transaction_costs.json",
+      "config": {
+        "scenario_name": "transaction_cost",
+        "description": "Proportional stock transaction cost of 5 basis points of traded notional. Same simulated GBM paths as the baseline (same seed and parameters).",
+        "initial_stock_price": 100.0,
+        "strike": 100.0,
+        "maturity_years": 1.0,
+        "risk_free_rate": 0.05,
+        "simulation_drift": 0.05,
+        "simulation_volatility": 0.2,
+        "hedging_volatility": 0.2,
+        "dividend_yield": 0.0,
+        "trading_steps": 252,
+        "n_paths": 10000,
+        "random_seed": 42,
+        "transaction_cost_rate": 0.0005,
+        "strategies": {
+          "daily": 1,
+          "weekly": 5
+        },
+        "n_sample_paths_to_save": 10,
+        "outputs": {
+          "summary_csv": "transaction_cost_summary.csv",
+          "terminal_pnl_csv": "transaction_cost_terminal_pnl.csv",
+          "pnl_figure": "transaction_cost_hedging_pnl.png",
+          "save_sample_paths": false
+        }
+      },
+      "random_seed": 42,
+      "command": "python scripts/run_experiments.py --config configs/transaction_costs.json",
+      "runtime_seconds": 0.158,
+      "outputs": [
+        "results/transaction_cost_summary.csv",
+        "results/transaction_cost_terminal_pnl.csv",
+        "results/figures/transaction_cost_hedging_pnl.png"
+      ],
+      "python_version": "3.14.4",
+      "operating_system": "Windows",
+      "dependency_versions": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "pandas": "3.1.1",
+        "matplotlib": "3.11.2"
+      },
+      "executed_at_utc": "2026-11-15T08:50:55Z"
+    }
+  },
+  "numerical_conventions": {
+    "pnl_sign": "positive = profit for the hedged option seller (short one call, one share)",
+    "pnl_units": "terminal, undiscounted currency units per option on one share",
+    "std": "sample standard deviation, ddof = 1",
+    "rmse": "sqrt(mean(pnl^2)), i.e. relative to zero terminal P&L",
+    "percentiles": "numpy.percentile method='linear' (Hyndman-Fan type 7)",
+    "transaction_costs": "cumulative nominal (undiscounted) stock-trading cost per path: initial hedge + rebalances + final liquidation; no option bid-ask",
+    "rebalancing": "rebalance at steps k = 0, m, 2m, ... with k < N; no rebalance and no Greek evaluation at expiry; stock liquidated and payoff paid at step N",
+    "premium": "Black-Scholes call price at t=0 using the hedging volatility",
+    "data": "SIMULATED geometric Brownian motion paths, exact log-normal transitions"
+  }
+}

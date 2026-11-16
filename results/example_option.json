@@ -1,0 +1,42 @@
+{
+  "inputs": {
+    "spot": 100.0,
+    "strike": 100.0,
+    "maturity_years": 1.0,
+    "rate": 0.05,
+    "volatility": 0.2,
+    "option_type": "call",
+    "dividend_yield": 0.0,
+    "contract_size_shares": 1
+  },
+  "price": 10.450583572185565,
+  "greeks_raw": {
+    "delta": 0.6368306511756191,
+    "gamma": 0.018762017345846895,
+    "vega_per_unit_vol": 37.52403469169379,
+    "theta_per_year": -6.414027546438197,
+    "rho_per_unit_rate": 53.232481545376345
+  },
+  "greeks_scaled": {
+    "vega_per_vol_point": 0.3752403469169379,
+    "rho_per_rate_point": 0.5323248154537634,
+    "theta_per_calendar_day": -0.01757267820941972
+  },
+  "implied_volatility_round_trip": 0.2000000000002432,
+  "units": {
+    "price": "currency units per option on one share",
+    "delta": "per 1.0 change in stock price",
+    "gamma": "per 1.0 change in stock price, per 1.0 change in stock price",
+    "vega_per_unit_vol": "per 1.0 absolute change in volatility (e.g. 0.20 -> 1.20)",
+    "vega_per_vol_point": "per 1 percentage-point change in volatility = raw / 100",
+    "theta_per_year": "calendar-time decay per year, other inputs fixed",
+    "theta_per_calendar_day": "raw theta / 365",
+    "rho_per_unit_rate": "per 1.0 absolute change in the rate",
+    "rho_per_rate_point": "per 1 percentage-point change in the rate = raw / 100"
+  },
+  "generated": {
+    "command": "python scripts/price_option.py --spot 100 --strike 100 --maturity 1 --rate 0.05 --volatility 0.20 --option-type call --output-json results/example_option.json",
+    "executed_at_utc": "2026-11-15T08:50:50Z",
+    "python_version": "3.14.4"
+  }
+}

@@ -1,0 +1,3 @@
+scenario,strategy,rebalance_every_steps,n_rebalance_dates,transaction_cost_rate,premium,n_paths,mean_pnl,std_pnl,rmse_pnl,p05_pnl,median_pnl,p95_pnl,min_pnl,max_pnl,mean_transaction_cost
+transaction_cost,daily,1,252,0.0005,10.45058357,10000,-0.3152504696,0.4502164132,0.5495974962,-1.094226057,-0.2816683128,0.3634671789,-3.427187461,1.527835463,0.309347196
+transaction_cost,weekly,5,51,0.0005,10.45058357,10000,-0.180839714,0.9604346886,0.9772643193,-1.774791108,-0.1490194999,1.345575553,-5.756439554,3.687634305,0.1752460158

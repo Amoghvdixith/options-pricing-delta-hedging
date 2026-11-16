@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: bs_hedging
+Version: 0.1.0
+Summary: Black-Scholes European option pricer, Greeks, implied volatility and a simulated delta-hedging study.
+Author: Amogh V Dixith
+License-Expression: MIT
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Dynamic: license-file
+
+# Black–Scholes Option Pricer and Delta-Hedging Simulation
+
+Draft — this README will be completed after the experiments have been run.
